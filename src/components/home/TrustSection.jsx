@@ -12,7 +12,7 @@ const features = [
     {
         id: 1,
         image: imgResponse,
-        title: "24/7 Rapid Responses",
+        title: "24/7 Rapid Response",
         description: "Burst pipe at 3 AM? We're deployed and on-site while others are sleeping.",
         span: "md:col-span-2 md:row-span-1" // Wide card
     },
