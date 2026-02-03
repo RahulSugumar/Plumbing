@@ -1,4 +1,4 @@
-name: Deploy React App to Hostinger
+name: Deploy React Vite App to Hostinger
 
 on:
   push:
@@ -10,28 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm ci
+      - run: npm run build
 
-      - name: Build project
-        run: npm run build
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          local-dir: dist/
-          server-dir: public_html/
-
-
+      - name: Deploy via FTP (lftp)
+        env:
+          FTP_HOST: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+        run: |
+          lftp -p $FTP_PORT -u "$FTP_USER","$FTP_PASS" $FTP_HOST <<EOF
+          set ftp:passive-mode on
+          set ftp:ssl-allow no
+          set ftp:ssl-force no
+          set net:max-retries 5
+          set net:timeout 40
+          mirror -R dist/ /public_html/
+          quit
+          EOF
