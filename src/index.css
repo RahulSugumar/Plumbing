@@ -1,26 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Design Tokens from Implementation Plan */
+  /* 
+   * GLOBAL COLOR PALETTE
+   * Change these hex codes to update the entire website's theme.
+   */
 
-  /* Primary Colors - Deep Trustworthy Blue */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  /* Main Brand Color */
+  /* Primary Brand Color - Structure (Header, Footer, Section Titles) */
+  --color-primary: #2F7D6D;
+  /* Soft Deep Green */
 
-  /* Secondary Colors - Eye-catching Gold/Orange for CTA */
-  --color-secondary-400: #fbbf24;
-  --color-secondary-500: #f59e0b;
-  --color-secondary-600: #d97706;
+  /* Secondary/Accent Color - Action (Buttons, CTAs) */
+  --color-secondary: #F59E0B;
+  /* Warm Orange */
+  --color-secondary-hover: #FDBA74;
+  /* Light Orange */
+
+  /* Backgrounds */
+  --color-background: #FFFFFF;
+  /* Pure White */
+  --color-surface: #F7FCFA;
+  /* Cloud/Mint White (Card Bg) */
+
+  /* Typography */
+  --color-text-main: #1F2937;
+  /* Dark Gray */
+  --color-text-muted: #6B7280;
+  /* Muted Gray */
+  --color-text-inverted: #FFFFFF;
+  /* White Text */
+
+  /* Borders */
+  --color-border: #E5E7EB;
 
   /* Fonts */
   --font-sans: "Inter", "system-ui", "sans-serif";
   --font-display: "Outfit", "Inter", "system-ui", "sans-serif";
+  --font-serif: "Playfair Display", "Georgia", "serif";
 }
 
 /* Base Styles */
@@ -29,9 +46,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light;
+  color: var(--color-text-main);
+  background-color: var(--color-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
