@@ -1,34 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Hero from './components/home/Hero';
-import ServiceHighlights from './components/home/ServiceHighlights';
-import BeforeAfterComparison from './components/home/BeforeAfterComparison';
-import TrustSection from './components/home/TrustSection';
 import Footer from './components/layout/Footer';
+
+// Pages
+import Home from './pages/Home';
+import Services from './pages/Services';
+
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-text-main font-sans">
-      <Navbar />
-      <main>
-        <Hero
-          headline={{ line1: "Expert Plumbing,", line2: "Trusted Solutions." }}
-          subtitle="Don't let plumbing problems disrupt your life. From advanced leak detection to full-scale installations, United Plumbing Co. delivers fast, reliable, and premium service you can count on 24/7."
-          trustBadge={{ text: "Top Rated Service", icons: ["★", "★", "★", "★", "★"] }}
-          buttons={{
-            primary: { text: "Book Now", onClick: () => console.log('Book') },
-            secondary: { text: "(555) 123-4567", onClick: () => console.log('Call') }
-          }}
-        />
-
-
-        <TrustSection />
-        <ServiceHighlights />
-        <BeforeAfterComparison />
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen bg-background text-text-main font-sans flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+          </Routes>
+        </main>
         <Footer />
-      </main>
-
-    </div>
+      </div>
+    </Router>
   );
 }
 

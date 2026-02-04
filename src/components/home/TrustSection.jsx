@@ -64,7 +64,7 @@ const TrustSection = () => {
 
     return (
         <section ref={sectionRef} className="py-32 bg-surface relative overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-0 relative z-10">
                 {/* Section Header */}
                 <div className="max-w-3xl mx-auto text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#0d2b26] mb-6 tracking-tight">
