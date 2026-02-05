@@ -87,25 +87,31 @@ export function TubeLightNavbar({ items, className }) {
                                     <div className="bg-white/90 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-2 w-64">
                                         {item.subItems.map((subItem, idx) => (
                                             <div key={idx} className="relative group/sub">
-                                                <div className="px-4 py-3 rounded-xl hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm font-medium text-gray-700 hover:text-[var(--color-primary)] transition-colors">
+                                                {/* Leve 1 Item (Category) */}
+                                                <Link
+                                                    to={subItem.url}
+                                                    className="px-4 py-3 rounded-xl hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm font-medium text-gray-700 hover:text-[var(--color-primary)] transition-colors"
+                                                >
                                                     {subItem.name}
-                                                    <span className="text-xs text-gray-400">›</span>
-                                                </div>
+                                                    {subItem.items && <span className="text-xs text-gray-400">›</span>}
+                                                </Link>
 
                                                 {/* Level 2 Flyout (Services) */}
-                                                <div className="absolute top-0 left-full pl-2 hidden group-hover/sub:block w-56">
-                                                    <div className="bg-white/90 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-2 ml-2">
-                                                        {subItem.items.map((serviceName, sIdx) => (
-                                                            <Link
-                                                                key={sIdx}
-                                                                to="/services"
-                                                                className="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
-                                                            >
-                                                                {serviceName}
-                                                            </Link>
-                                                        ))}
+                                                {subItem.items && (
+                                                    <div className="absolute top-0 left-full pl-2 hidden group-hover/sub:block w-56">
+                                                        <div className="bg-white/90 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-2 ml-2">
+                                                            {subItem.items.map((serviceItem, sIdx) => (
+                                                                <Link
+                                                                    key={sIdx}
+                                                                    to={serviceItem.url}
+                                                                    className="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                                                                >
+                                                                    {serviceItem.name}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                         ))}
                                     </div>

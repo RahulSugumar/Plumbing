@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Wrench, MapPin, User, Phone } from 'lucide-react';
+import { Home, Wrench, MapPin, User, Phone, Calendar } from 'lucide-react';
 import { TubeLightNavbar } from '../ui/TubeLightNavbar';
 
 const Navbar = () => {
@@ -16,21 +16,40 @@ const Navbar = () => {
             subItems: [
                 {
                     name: "Emergency Services",
-                    items: ["Burst Pipe Repair", "Severe Leak Detection", "Gas Leak Fixes", "Overflowing Toilets"]
+                    url: "/services#emergency",
+                    items: [
+                        { name: "Burst Pipe Repair", url: "/services#burst-pipe-repair" },
+                        { name: "Severe Leak Detection", url: "/services#severe-leak-detection" },
+                        { name: "Gas Leak Fixes", url: "/services#gas-leak-fixes" },
+                        { name: "Overflowing Toilets", url: "/services#overflowing-toilets" }
+                    ]
                 },
                 {
                     name: "Residential Plumbing",
-                    items: ["Water Heater Install", "Drain Cleaning", "Fixture Updates", "Sewer Line Repair"]
+                    url: "/services#residential",
+                    items: [
+                        { name: "Water Heater Install", url: "/services#water-heater-install" },
+                        { name: "Drain Cleaning", url: "/services#drain-cleaning" },
+                        { name: "Fixture Updates", url: "/services#fixture-updates" },
+                        { name: "Sewer Line Repair", url: "/services#sewer-line-repair" }
+                    ]
                 },
                 {
                     name: "Commercial Solutions",
-                    items: ["Backflow Prevention", "Grease Trap Cleaning", "Hydro Jetting", "System Maintenance"]
+                    url: "/services#commercial",
+                    items: [
+                        { name: "Backflow Prevention", url: "/services#backflow-prevention" },
+                        { name: "Grease Trap Cleaning", url: "/services#grease-trap-cleaning" },
+                        { name: "Hydro Jetting", url: "/services#hydro-jetting" },
+                        { name: "System Maintenance", url: "/services#system-maintenance" }
+                    ]
                 }
             ]
         },
 
         { name: 'Areas', url: '/areas', icon: MapPin },
         { name: 'About', url: '/about', icon: User },
+        { name: 'Booking', url: '/booking', icon: Calendar },
         { name: 'Contact', url: '/contact', icon: Phone }
     ];
 

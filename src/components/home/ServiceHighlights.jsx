@@ -32,7 +32,10 @@ const services = [
     }
 ];
 
+import { useNavigate } from 'react-router-dom';
+
 const ServiceHighlights = () => {
+    const navigate = useNavigate();
     const sectionRef = useRef(null);
     const { contextSafe } = useGSAP({ scope: sectionRef });
 
@@ -68,7 +71,10 @@ const ServiceHighlights = () => {
                     </h2>
 
                     <div className="flex justify-center">
-                        <button className="group flex items-center gap-2 text-[#0d2b26] font-semibold border-b border-[#0d2b26]/20 pb-1 hover:border-[#0d2b26] transition-colors">
+                        <button
+                            onClick={() => navigate('/services')}
+                            className="group flex items-center gap-2 text-[#0d2b26] font-semibold border-b border-[#0d2b26]/20 pb-1 hover:border-[#0d2b26] transition-colors"
+                        >
                             View All Services
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
@@ -83,6 +89,7 @@ const ServiceHighlights = () => {
                             className={`group relative rounded-3xl overflow-hidden cursor-pointer h-full shadow-lg ${service.id === 'commercial' ? 'md:mt-12' : ''}`}
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
+                            onClick={() => navigate('/services')}
                         >
                             {/* Background Image */}
                             <div className="absolute inset-0">
@@ -109,10 +116,13 @@ const ServiceHighlights = () => {
                                     {service.description}
                                 </p>
 
-                                <div className="flex items-center gap-2 text-[var(--color-secondary)] font-medium text-sm tracking-wide uppercase">
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); navigate('/services'); }}
+                                    className="flex items-center gap-2 text-[var(--color-secondary)] font-medium text-sm tracking-wide uppercase hover:text-white transition-colors"
+                                >
                                     Learn More
                                     <ArrowRight className="arrow-icon w-4 h-4" />
-                                </div>
+                                </button>
                             </div>
                         </div>
                     ))}

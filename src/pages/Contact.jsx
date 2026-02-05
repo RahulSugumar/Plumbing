@@ -3,7 +3,10 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Phone, Mail, MapPin, Clock, CheckCircle2, MessageSquare, ArrowRight } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 const Contact = () => {
+    const navigate = useNavigate();
     const containerRef = useRef(null);
 
     useGSAP(() => {
@@ -144,7 +147,10 @@ const Contact = () => {
                                 <p className="text-gray-300 mb-8 text-lg">
                                     For non-emergency repairs, booking online is the fastest way to secure your slot.
                                 </p>
-                                <button className="bg-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-[#266658] transition-all w-full md:w-auto flex items-center justify-center gap-2">
+                                <button
+                                    onClick={() => navigate('/booking')}
+                                    className="bg-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-[#266658] transition-all w-full md:w-auto flex items-center justify-center gap-2"
+                                >
                                     <CheckCircle2 className="w-5 h-5" />
                                     Book Appointment Online
                                 </button>

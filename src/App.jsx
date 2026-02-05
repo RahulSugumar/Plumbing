@@ -9,6 +9,7 @@ import Services from './pages/Services';
 
 import About from './pages/About';
 import Areas from './pages/Areas';
+import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 
 // Scroll to top on route change
@@ -32,6 +33,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/areas" element={<Areas />} />
+            <Route path="/booking" element={<Booking />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

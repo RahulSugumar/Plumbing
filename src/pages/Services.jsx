@@ -25,9 +25,27 @@ import { Phone, Star } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { useNavigate, useLocation } from 'react-router-dom';
+
 const Services = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const headerRef = useRef(null);
     const containerRef = useRef(null);
+
+    // Handle scroll to hash
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                // Small delay to ensure render and GSAP doesn't conflict
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [location]);
 
     useGSAP(() => {
         // Header Animation
@@ -64,6 +82,7 @@ const Services = () => {
 
     const categories = [
         {
+            id: "emergency",
             title: "Emergency Services",
             description: "24/7 rapid response for critical failures. We're there when you need us most.",
             color: "text-red-600",
@@ -75,6 +94,7 @@ const Services = () => {
             ]
         },
         {
+            id: "residential",
             title: "Residential Plumbing",
             description: "Complete care for your home's water systems. Clean, respectable, and efficient.",
             color: "text-blue-600",
@@ -86,6 +106,7 @@ const Services = () => {
             ]
         },
         {
+            id: "commercial",
             title: "Commercial Solutions",
             description: "Scalable plumbing infrastructure for businesses, offices, and industrial sites.",
             color: "text-amber-600",
@@ -115,7 +136,10 @@ const Services = () => {
                             We don't just fix pipes; we engineer solutions. Explore our comprehensive suite of premium plumbing services.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <button className="bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-[#266658] transition-all transform hover:-translate-y-1">
+                            <button
+                                onClick={() => navigate('/booking')}
+                                className="bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-[#266658] transition-all transform hover:-translate-y-1"
+                            >
                                 Book a Service
                             </button>
                             <button className="bg-white border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-gray-50 transition-all">
@@ -179,7 +203,7 @@ const Services = () => {
                 {/* Service Categories */}
                 <div className="space-y-40">
                     {categories.map((category, idx) => (
-                        <div key={idx} className="service-category">
+                        <div key={idx} id={category.id} className="service-category scroll-mt-32">
                             {/* Category Header */}
                             <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 border-b border-gray-200 pb-8">
                                 <div className="max-w-xl">
@@ -198,7 +222,11 @@ const Services = () => {
                             {/* Services Image Grid */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {category.services.map((service, sIdx) => (
-                                    <div key={sIdx} className="service-card group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                                    <div
+                                        key={sIdx}
+                                        id={service.name.replace(/\s+/g, '-').toLowerCase()}
+                                        className="service-card group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 scroll-mt-32"
+                                    >
                                         {/* Background Image */}
                                         <div className="absolute inset-0 bg-gray-200">
                                             <img
