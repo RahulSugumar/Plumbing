@@ -100,7 +100,7 @@ const Services = () => {
 
     return (
         <div ref={containerRef} className="pt-24 pb-20 bg-surface min-h-screen overflow-hidden">
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 max-w-7xl">
 
                 {/* Hero Header */}
                 <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">

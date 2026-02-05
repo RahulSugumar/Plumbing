@@ -56,7 +56,7 @@ const ServiceHighlights = () => {
 
     return (
         <section ref={sectionRef} className="py-24 bg-white relative">
-            <div className="container mx-auto px-1">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24">
 
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">

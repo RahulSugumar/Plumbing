@@ -7,6 +7,10 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 
+import About from './pages/About';
+import Areas from './pages/Areas';
+import Contact from './pages/Contact';
+
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,6 +30,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/areas" element={<Areas />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
