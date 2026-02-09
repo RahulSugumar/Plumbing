@@ -49,7 +49,6 @@ const Navbar = () => {
 
         { name: 'Areas', url: '/areas', icon: MapPin },
         { name: 'About', url: '/about', icon: User },
-        { name: 'Booking', url: '/booking', icon: Calendar },
         { name: 'Contact', url: '/contact', icon: Phone }
     ];
 

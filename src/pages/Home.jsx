@@ -15,7 +15,7 @@ const Home = () => {
                 subtitle="Don't let plumbing problems disrupt your life. From advanced leak detection to full-scale installations, United Plumbing Co. delivers fast, reliable, and premium service you can count on 24/7."
                 trustBadge={{ text: "Top Rated Service", icons: ["★", "★", "★", "★", "★"] }}
                 buttons={{
-                    primary: { text: "Book Now", onClick: () => navigate('/booking') },
+                    primary: { text: "Book Now", onClick: () => navigate('/') },
                     secondary: { text: "(555) 123-4567", onClick: () => console.log('Call') }
                 }}
             />
