@@ -1,18 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MoveHorizontal } from 'lucide-react';
 
-// Images
-import imgBefore from '../../assets/before.jpeg';
-import imgAfter from '../../assets/after.jpeg';
+// Default Images
+import defaultImgBefore from '../../assets/before.jpeg';
+import defaultImgAfter from '../../assets/after.jpeg';
 
-const BeforeAfterComparison = () => {
+const BeforeAfterComparison = ({
+    beforeImage = defaultImgBefore,
+    afterImage = defaultImgAfter,
+    title = "See The Transformation.",
+    subtitle = "Real Results",
+    description = "Drag the slider to reveal how we turn plumbing disasters into pristine, efficient systems.",
+    beforeLabel = "BEFORE",
+    afterLabel = "AFTER"
+}) => {
     const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
     const containerRef = useRef(null);
-
-    // Placeholder Images (Unsplash)
-    const beforeImage = imgBefore; // Rusty/Industrial placeholder
-    const afterImage = imgAfter;   // Clean/Modern placeholder
 
     const handleMove = (event) => {
         if (!isDragging || !containerRef.current) return;
@@ -60,13 +64,13 @@ const BeforeAfterComparison = () => {
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <span className="text-[var(--color-secondary)] font-bold tracking-widest text-xs uppercase mb-3 block">
-                        Real Results
+                        {subtitle}
                     </span>
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#0d2b26] leading-tight mb-6">
-                        See The Transformation.
+                        {title}
                     </h2>
                     <p className="text-lg text-gray-600 leading-relaxed font-light">
-                        Drag the slider to reveal how we turn plumbing disasters into pristine, efficient systems.
+                        {description}
                     </p>
                 </div>
 
@@ -80,11 +84,11 @@ const BeforeAfterComparison = () => {
                     {/* AFTER Image (Background - The "Base") */}
                     <img
                         src={afterImage}
-                        alt="After - New Plumbing"
+                        alt={afterLabel}
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md px-4 py-1 rounded-full border border-white/20 text-white font-bold text-sm z-10">
-                        AFTER
+                        {afterLabel}
                     </div>
 
                     {/* BEFORE Image (Clipped Overlay) */}
@@ -94,11 +98,11 @@ const BeforeAfterComparison = () => {
                     >
                         <img
                             src={beforeImage}
-                            alt="Before - Old Plumbing"
+                            alt={beforeLabel}
                             className="absolute inset-0 w-full h-full object-cover"
                         />
                         <div className="absolute top-6 left-6 bg-black/50 backdrop-blur-md px-4 py-1 rounded-full border border-white/10 text-white font-bold text-sm z-10">
-                            BEFORE
+                            {beforeLabel}
                         </div>
                     </div>
 

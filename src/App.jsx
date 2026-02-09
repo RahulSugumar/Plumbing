@@ -11,6 +11,7 @@ import About from './pages/About';
 import Areas from './pages/Areas';
 import Booking from './pages/Booking';
 import Contact from './pages/Contact';
+import BurstPipeRepair from './pages/services/emergency/BurstPipeRepair';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/areas" element={<Areas />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/services/emergency/burst-pipe-repair" element={<BurstPipeRepair />} />
           </Routes>
         </main>
         <Footer />

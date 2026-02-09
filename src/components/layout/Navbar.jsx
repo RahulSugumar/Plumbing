@@ -18,7 +18,7 @@ const Navbar = () => {
                     name: "Emergency Services",
                     url: "/services#emergency",
                     items: [
-                        { name: "Burst Pipe Repair", url: "/services#burst-pipe-repair" },
+                        { name: "Burst Pipe Repair", url: "/services/emergency/burst-pipe-repair" },
                         { name: "Severe Leak Detection", url: "/services#severe-leak-detection" },
                         { name: "Gas Leak Fixes", url: "/services#gas-leak-fixes" },
                         { name: "Overflowing Toilets", url: "/services#overflowing-toilets" }
