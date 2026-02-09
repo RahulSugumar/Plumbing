@@ -87,7 +87,7 @@ const Services = () => {
             description: "24/7 rapid response for critical failures. We're there when you need us most.",
             color: "text-red-600",
             services: [
-                { name: "Burst Pipe Repair", icon: Droplets, image: burstPipeImg },
+                { name: "Burst Pipe Repair", icon: Droplets, image: burstPipeImg, link: "/services/emergency/burst-pipe-repair" },
                 { name: "Severe Leak Detection", icon: Zap, image: leakDetectionImg },
                 { name: "Gas Leak Fixes", icon: Flame, image: gasLeakImg },
                 { name: "Overflowing Toilets", icon: Home, image: overflowingToiletImg },
@@ -225,6 +225,7 @@ const Services = () => {
                                     <div
                                         key={sIdx}
                                         id={service.name.replace(/\s+/g, '-').toLowerCase()}
+                                        onClick={() => service.link && navigate(service.link)}
                                         className="service-card group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 scroll-mt-32"
                                     >
                                         {/* Background Image */}
